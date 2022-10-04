@@ -6,8 +6,10 @@
 package Prueba;
 
 import Controlador.AlumnoData;
+import Controlador.InscripcionData;
 import Controlador.MateriaData;
 import Modelo.Alumno;
+import Modelo.Inscripcion;
 import Modelo.Materia;
 import java.time.*;
 
@@ -25,6 +27,10 @@ public class Main {
 
     static Materia mate = null;
 
+    static InscripcionData iData = new InscripcionData();
+
+    static Inscripcion inscri = null;
+
     public static void main(String[] args) {
 //////////////////////////////////////////////////////////////////////////////////////
 //        guardarAlumno();
@@ -39,14 +45,18 @@ public class Main {
 //        borrarMateria();
 //        obtenerMateria();
 ////////////////////////////////////////////////////////////////////////////////////
-
-
+//        agregarInscripcion();
+//        actualizarNota();
+//        obtenerCursadaXId();
+//        borrarInscripto();
+//        MateriaNoInscripto();
+//        obtenerInscriptos();
 
     }
 
     public static void guardarAlumno() {
 
-        alu = new Alumno(1213, "fede", "Muñoz", LocalDate.of(1966, 01, 06), true);
+        alu = new Alumno(1213, "Moises", "Lopez", LocalDate.of(1966, 01, 06), true);
         ad.guardarAlumno(alu);
     }
 
@@ -132,9 +142,53 @@ public class Main {
             System.out.println(x);
         }
     }
-    
+
 ////////////////////////////////////////////////////////////////////////////////////
-    
-    
+    public static void agregarInscripcion() {
+
+        alu = ad.BuscarAlumnoXId(1);
+        mate = md.BuscarMateriaXId(5);
+
+        inscri = new Inscripcion(0, mate, alu);
+
+        iData.agregarInscripcion(inscri);
+    }
+
+    public static void actualizarNota() {
+        alu = ad.BuscarAlumnoXId(1);
+        mate = md.BuscarMateriaXId(5);
+
+        iData.actualizarNota(alu, mate, 5);
+    }
+
+    public static void obtenerCursadaXId() {
+
+        inscri = iData.obtenerCursadaXId(1, 1);///me deberia devolver federico y a matematica 1
+
+        System.out.println(inscri.getIdAlumno().getNombre());
+        System.out.println(inscri.getIdMateria().getNombre());
+        System.out.println(inscri.getNota());
+    }
+
+    public static void borrarInscripto() {
+        iData.borrarInscripto(1, 5);
+    }
+
+    public static void MateriaNoInscripto() {
+
+        for (Materia x : iData.MateriaNoInscripto(1)) {
+            System.out.println(x.getNombre());
+        }
+    }
+
+    public static void obtenerInscriptos() {
+
+        for (Inscripcion x : iData.obtenerInscriptos()) {
+            System.out.println(x.getIdAlumno().getNombre());
+            System.out.println(x.getIdMateria().getNombre());
+            System.out.println(x.getNota());
+        }
+
+    }
 
 }

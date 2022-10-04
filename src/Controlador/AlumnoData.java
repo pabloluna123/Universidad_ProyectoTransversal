@@ -31,10 +31,13 @@ public class AlumnoData {
             if (rs.next()) {
 
                 alumno.setIdAlumno(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Alumno agregado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Alumno no agregado");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-AgregarAlumno");
+            JOptionPane.showMessageDialog(null, "AlumnoData Sentencia SQL/base de datos inactiva, error-agregarAlumno");
         }
     }
 
@@ -60,7 +63,7 @@ public class AlumnoData {
 
             ps.close();
         } catch (SQLException ex) {//error en la sentencia
-            System.err.println("Error al modificar" + ex);
+            JOptionPane.showMessageDialog(null, "AlumnoData Sentencia SQL/base de datos inactiva, error-actualizarAlumno");
         }
     }
 
@@ -84,7 +87,7 @@ public class AlumnoData {
             ///guardo en la base lo que venia en el alumno
 
         } catch (SQLException ex) {//error en la sentencia
-            System.err.println("Error al borrar" + ex);
+            JOptionPane.showMessageDialog(null, "AlumnoData Sentencia SQL/base de datos inactiva, error-borrarAlumno");
         }
     }
 
@@ -107,7 +110,7 @@ public class AlumnoData {
             ps.close();
         } catch (SQLException ex) {
             
-            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-ObtenerAlumnosXId");
+            JOptionPane.showMessageDialog(null, "AlumnoData Sentencia SQL/base de datos inactiva, error-buscarAlumnoXId");
 
         }
         return alumno;
@@ -136,7 +139,7 @@ public class AlumnoData {
 
             ps.close();//cerra la coneccion      
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-ObtenerAlumnos");
+            JOptionPane.showMessageDialog(null, "AlumnoData Sentencia SQL/base de datos inactiva, error-obtenerAlumnos");
         }
         return listaTemp;
     }

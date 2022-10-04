@@ -22,6 +22,7 @@ public class MateriaData {
     public void guardarMateria(Materia materia) {
         String sql = "INSERT INTO materia (nombre,año, estado) VALUES (?, ?, ?)";
         try {
+
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//aviso despues de que inserte el alumno me recuperar/retorna la clave generada, la clave que se le asigno en bd
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
@@ -30,13 +31,17 @@ public class MateriaData {
 
             ///setearle al id del alumno de la clase
             ResultSet rs = ps.getGeneratedKeys();//recupero las llaves el ultimo insertado es la primera llave
-            if (rs.next()) {
 
+            if (rs.next()) {
                 materia.setIdMateria(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Materia agregada");
+            } else {
+                JOptionPane.showMessageDialog(null, "Materia no agregada");
             }
+
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL erronea-AgregarMateria");
+            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL/base de datos inactiva, error-agregarMateria");
         }
     }
 
@@ -61,7 +66,7 @@ public class MateriaData {
 
             ps.close();
         } catch (SQLException ex) {//error en la sentencia
-            System.err.println("Error al modificar" + ex);
+            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL/base de datos inactiva, error-actualizarMateria");
         }
     }
 
@@ -85,7 +90,7 @@ public class MateriaData {
             ///guardo en la base lo que venia en el Materia
 
         } catch (SQLException ex) {//error en la sentencia
-            System.err.println("Error al borrar" + ex);
+            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL/base de datos inactiva, error-borrarMateria");
         }
     }
 
@@ -98,16 +103,16 @@ public class MateriaData {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                
+
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
-                materia.setEstado(rs.getBoolean("estado"));   
+                materia.setEstado(rs.getBoolean("estado"));
             }
             ps.close();
         } catch (SQLException ex) {
 
-            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL erronea-ObtenerMateriaXId");
+            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL/base de datos inactiva, error-buscarMateriaXId");
 
         }
         return materia;
@@ -127,14 +132,14 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
-                materia.setEstado(rs.getBoolean("estado")); 
+                materia.setEstado(rs.getBoolean("estado"));
 
                 listaTemp.add(materia);
             }
 
             ps.close();//cerra la coneccion      
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL erronea-ObtenerMateria");
+            JOptionPane.showMessageDialog(null, "MateriaData Sentencia SQL/base de datos inactiva, error-obtenerMaterias");
         }
         return listaTemp;
     }
