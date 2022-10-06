@@ -134,7 +134,34 @@ public class InscripcionData {
     }
 
     public List<Alumno> AlumnosInscriptos(int idMateria) {///id materia me devuelve los alumnos incriptos a dicha materia
-        return null;
+        List<Alumno> listTemp = new ArrayList<>();
+        String instruccion = "SELECT alumno.idAlumno, alumno.dni, alumno.apellido, alumno.nombre, alumno.fechaNacimiento, alumno.estado"
+                + " FROM inscripcion"
+                + " JOIN alumno ON inscripcion.idAlumno=alumno.idAlumno"
+                + " WHERE inscripcion.idMateria=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, idMateria);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Alumno a = new Alumno();
+                a.setIdAlumno(rs.getInt("idAlumno"));
+                a.setDni(rs.getInt("dni"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                a.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                a.setEstado(rs.getBoolean("estado"));
+                listTemp.add(a);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "InscripcionData Sentencia SQL/base de datos inactiva, error-AlumnosInscriptos");
+        }
+        return listTemp;   
     }
 
     public List<Materia> MateriaNoInscripto(int idAlumno) {//id alumno devuelve una lista de materias en la que no esta inscripto el alumno
@@ -169,7 +196,33 @@ public class InscripcionData {
     }
 
     public List<Materia> MateriasInscripto(int idAlumno) {//id alumno devuelve una lista de materias en la que esta inscripto el alumno
-        return null;
+        ArrayList<Materia> listaTemp = new ArrayList<>();
+         
+         String sql = "SELECT m.idMateria, m.nombre, m.año, m.estado"
+                 + " FROM materia m, alumno a, inscripcion i" 
+                 + " WHERE m.idMateria = i.idMateria" 
+                 + " AND a.idAlumno = i.idAlumno "
+                 + " AND i.idAlumno = ?";  
+         
+         try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("año"));
+                materia.setEstado(rs.getBoolean("estado"));
+
+                listaTemp.add(materia);
+            }
+            ps.close();
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "InscripcionData Sentencia SQL/base de datos inactiva, error-MateriasInscripto");
+        }
+        return listaTemp; 
     }
 
     public List<Inscripcion> obtenerInscriptos() {

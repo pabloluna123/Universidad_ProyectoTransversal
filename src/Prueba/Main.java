@@ -12,6 +12,8 @@ import Modelo.Alumno;
 import Modelo.Inscripcion;
 import Modelo.Materia;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -51,7 +53,9 @@ public class Main {
 //        borrarInscripto();
 //        MateriaNoInscripto();
 //        obtenerInscriptos();
-
+//        alumnoInscripto(2);
+//        materiasInscripto(3);   
+    
     }
 
     public static void guardarAlumno() {
@@ -189,6 +193,32 @@ public class Main {
             System.out.println(x.getNota());
         }
 
+    }
+    
+    public static void alumnoInscripto(int idMat){
+        
+        mate = md.BuscarMateriaXId(idMat);
+        System.out.println("Materia: " + mate.getNombre());
+
+        List <Alumno> listAlumn = new ArrayList();
+        listAlumn = iData.AlumnosInscriptos(idMat);
+          
+        for (Alumno a: listAlumn){
+             System.out.println("Alumno Inscripto: "+ a.getApellido() + " " + a.getNombre());
+        }
+    }
+    
+    public static void materiasInscripto(int idAlum){
+        
+        alu = ad.BuscarAlumnoXId(idAlum);
+        System.out.println("alumno: "+ alu.getApellido()+" " + alu.getNombre());
+        
+        List <Materia> list = new ArrayList();
+        list = iData.MateriasInscripto(idAlum);
+               
+        for (Materia m: list){
+              System.out.println("Materias inscripto: "+ m.getNombre()+" Año: " + m.getAnio());
+        }    
     }
 
 }
