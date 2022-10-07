@@ -10,12 +10,12 @@ package Modelo;
  * @author Familia
  */
 public class Materia {
-    
+
     private int idMateria;
     private int anio;
     private String nombre;
     private boolean estado;
-    
+
     public Materia() {
     }
 
@@ -24,7 +24,6 @@ public class Materia {
         this.nombre = nombre;
         this.estado = estado;
     }
-    
 
     public Materia(int idMateria, int anio, String nombre, boolean estado) {
         this.idMateria = idMateria;
@@ -67,7 +66,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return nombre + "/" + anio;
+        return idMateria + "/" + nombre + "/" + anio;
     }
 
     @Override
@@ -95,11 +94,4 @@ public class Materia {
         return true;
     }
 
-    
-    
-    
-    
-    
-      
-    
 }
