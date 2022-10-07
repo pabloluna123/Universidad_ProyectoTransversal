@@ -5,17 +5,57 @@
  */
 package Vista;
 
+import Controlador.AlumnoData;
+import Modelo.Alumno;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Familia
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormularioAlumno
-     */
+    private AlumnoData ad;
+
     public FormularioAlumno() {
         initComponents();
+        ad = new AlumnoData();
+    }
+
+    public void activarCampos() {
+        jtfLegajo.setEnabled(true);
+        jtfDni.setEnabled(true);
+        jtfNombre.setEnabled(true);
+        jtfApellido.setEnabled(true);
+        jdcFecha.setEnabled(true);
+        jcbEstado.setEnabled(true);
+        jbBuscar.setEnabled(true);
+        jbGuardar.setEnabled(true);
+    }
+
+    public void desactivarCampos() {
+        jtfLegajo.setEnabled(false);
+        jtfDni.setEnabled(false);
+        jtfNombre.setEnabled(false);
+        jtfApellido.setEnabled(false);
+        jdcFecha.setEnabled(false);
+        jcbEstado.setEnabled(false);
+        jbBuscar.setEnabled(false);
+        jbGuardar.setEnabled(false);
+        jbActualizar.setEnabled(false);
+
+    }
+
+    public void limpiarCampos() {
+        jtfLegajo.setText("");
+        jtfDni.setText("");
+        jtfNombre.setText("");
+        jtfApellido.setText("");
+        jdcFecha.setDate(null);
+        jcbEstado.setSelected(false);
     }
 
     /**
@@ -27,21 +67,314 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jtfLegajo = new javax.swing.JTextField();
+        jtfDni = new javax.swing.JTextField();
+        jtfNombre = new javax.swing.JTextField();
+        jtfApellido = new javax.swing.JTextField();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
+        jcbEstado = new javax.swing.JCheckBox();
+        jbGuardar = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Formulario Alumnos ;)");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel2.setText("Legajo:");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel3.setText("Apellido:");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel4.setText("Nombre:");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel5.setText("Fecha de nac.");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel6.setText("Estado:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel7.setText("DNI:");
+
+        jtfLegajo.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfLegajo.setEnabled(false);
+        jtfLegajo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfLegajoFocusLost(evt);
+            }
+        });
+
+        jtfDni.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfDni.setEnabled(false);
+        jtfDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfDniFocusLost(evt);
+            }
+        });
+
+        jtfNombre.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfNombre.setEnabled(false);
+
+        jtfApellido.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfApellido.setEnabled(false);
+
+        jdcFecha.setEnabled(false);
+
+        jcbEstado.setEnabled(false);
+
+        jbGuardar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+
+        jbActualizar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbActualizar.setText("Actualizar");
+        jbActualizar.setEnabled(false);
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
+
+        jbSalir.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+
+        jbBuscar.setText("Buscar");
+        jbBuscar.setEnabled(false);
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
+
+        jbNuevo.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbNuevo.setText("Nuevo");
+        jbNuevo.setToolTipText("");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbGuardar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfDni, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfLegajo, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addComponent(jbBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jbActualizar)
+                                .addGap(48, 48, 48)
+                                .addComponent(jbNuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                .addComponent(jbSalir)))))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbBuscar)))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbGuardar)
+                    .addComponent(jbActualizar)
+                    .addComponent(jbSalir)
+                    .addComponent(jbNuevo))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        limpiarCampos();
+        activarCampos();
+        jbActualizar.setEnabled(false);
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+
+        //funcionamiento
+        if (jtfDni.getText().equals("") || jtfNombre.getText().equals("") || jtfApellido.getText().equals("") || jdcFecha.getDate() == null || !(jcbEstado.isSelected())) {
+            JOptionPane.showMessageDialog(this, "Rellene todos los campos exepto legajo");
+        } else {
+
+            int dni = Integer.parseInt(jtfDni.getText());
+            String nombre = jtfNombre.getText();
+            String apellido = jtfApellido.getText();
+            Date input = jdcFecha.getDate();
+            LocalDate fecha = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean estado = jcbEstado.isSelected();
+            Alumno alumno = new Alumno(dni, nombre, apellido, fecha, estado);
+            ad.guardarAlumno(alumno);
+
+            limpiarCampos();
+            desactivarCampos();
+        }
+
+
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+
+        int legajo = Integer.parseInt(jtfLegajo.getText());
+        int dni = Integer.parseInt(jtfDni.getText());
+        String nombre = jtfNombre.getText();
+        String apellido = jtfApellido.getText();
+        Date input = jdcFecha.getDate();
+        boolean estado = jcbEstado.isSelected();
+        LocalDate fecha = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Alumno alumno = new Alumno(legajo, dni, nombre, apellido, fecha, estado);
+        ad.actualizarAlumno(alumno);
+        limpiarCampos();
+        desactivarCampos();
+    }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        if (jtfLegajo.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Rellene el campo legajo para buscar el alumno");
+        } else {
+
+            int legajo = Integer.parseInt(jtfLegajo.getText());
+
+            Alumno alumno = ad.BuscarAlumnoXId(legajo);
+
+            jtfDni.setText(alumno.getDni() + "");
+            jtfNombre.setText(alumno.getNombre());
+            jtfApellido.setText(alumno.getApellido());
+            jdcFecha.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+            jcbEstado.setSelected(alumno.isEstado());
+            jbActualizar.setEnabled(true);
+            jbGuardar.setEnabled(false);
+        }
+
+
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jtfLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLegajoFocusLost
+        try {
+            int legajo = Integer.parseInt(jtfLegajo.getText());
+        } catch (NumberFormatException exp) {
+            if (!(jtfLegajo.getText().equals(""))) {
+                JOptionPane.showMessageDialog(this, "Ingrese un legajo valido");
+                jtfLegajo.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_jtfLegajoFocusLost
+
+    private void jtfDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDniFocusLost
+        try {
+            int dni = Integer.parseInt(jtfDni.getText());
+        } catch (NumberFormatException e) {
+
+            if (!(jtfDni.getText().equals(""))) {
+                JOptionPane.showMessageDialog(this, "Ingrese un dni valido");
+                jtfDni.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_jtfDniFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbActualizar;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JCheckBox jcbEstado;
+    private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfDni;
+    private javax.swing.JTextField jtfLegajo;
+    private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 }

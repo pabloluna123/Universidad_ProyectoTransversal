@@ -88,7 +88,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+        return nombre + "/" + apellido + "/" + dni;
     }
     
     ///hash code fijarse si es necesario
