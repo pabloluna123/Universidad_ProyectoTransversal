@@ -271,6 +271,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         limpiarCampos();
         activarCampos();
         jbActualizar.setEnabled(false);
+        jtfDni.requestFocus();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -321,13 +322,21 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
             Alumno alumno = ad.BuscarAlumnoXId(legajo);
 
-            jtfDni.setText(alumno.getDni() + "");
-            jtfNombre.setText(alumno.getNombre());
-            jtfApellido.setText(alumno.getApellido());
-            jdcFecha.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
-            jcbEstado.setSelected(alumno.isEstado());
-            jbActualizar.setEnabled(true);
-            jbGuardar.setEnabled(false);
+            if (alumno.getDni() > 0) {
+
+                jtfDni.setText(alumno.getDni() + "");
+                jtfNombre.setText(alumno.getNombre());
+                jtfApellido.setText(alumno.getApellido());
+                jdcFecha.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+                jcbEstado.setSelected(alumno.isEstado());
+                jbActualizar.setEnabled(true);
+                jbGuardar.setEnabled(false);
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "no existe el alumno con ese legajo");
+                limpiarCampos();
+            }
         }
 
 
