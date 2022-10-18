@@ -67,98 +67,109 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JCheckBox();
         jtfLegajo = new javax.swing.JTextField();
         jtfDni = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfApellido = new javax.swing.JTextField();
-        jdcFecha = new com.toedter.calendar.JDateChooser();
-        jcbEstado = new javax.swing.JCheckBox();
+        jbBuscar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
-        jbBuscar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Formulario Alumnos ;)");
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel1.setText("Formulario Alumnos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, 45));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Legajo:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel3.setText("Apellido:");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel4.setText("Nombre:");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel5.setText("Fecha de nac.");
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jLabel6.setText("Estado:");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("DNI:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Nombre:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Apellido:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Fecha de nac.");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Estado:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+
+        jcbEstado.setEnabled(false);
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 26, 34));
+
+        jtfLegajo.setBackground(new java.awt.Color(102, 102, 255));
         jtfLegajo.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfLegajo.setForeground(new java.awt.Color(255, 255, 255));
+        jtfLegajo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtfLegajo.setEnabled(false);
         jtfLegajo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfLegajoFocusLost(evt);
             }
         });
+        jPanel1.add(jtfLegajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 195, -1));
 
+        jtfDni.setBackground(new java.awt.Color(102, 102, 255));
         jtfDni.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfDni.setForeground(new java.awt.Color(255, 255, 255));
+        jtfDni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtfDni.setEnabled(false);
         jtfDni.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfDniFocusLost(evt);
             }
         });
+        jPanel1.add(jtfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 195, -1));
 
+        jtfNombre.setBackground(new java.awt.Color(102, 102, 255));
         jtfNombre.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jtfNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtfNombre.setEnabled(false);
+        jPanel1.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 195, -1));
 
+        jtfApellido.setBackground(new java.awt.Color(102, 102, 255));
         jtfApellido.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        jtfApellido.setForeground(new java.awt.Color(255, 255, 255));
+        jtfApellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtfApellido.setEnabled(false);
+        jPanel1.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 195, -1));
 
-        jdcFecha.setEnabled(false);
-
-        jcbEstado.setEnabled(false);
-
-        jbGuardar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jbGuardar.setText("Guardar");
-        jbGuardar.setEnabled(false);
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
-            }
-        });
-
-        jbActualizar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jbActualizar.setText("Actualizar");
-        jbActualizar.setEnabled(false);
-        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbActualizarActionPerformed(evt);
-            }
-        });
-
-        jbSalir.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jbSalir.setText("Salir");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
-
+        jbBuscar.setBackground(new java.awt.Color(102, 102, 255));
+        jbBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jbBuscar.setText("Buscar");
         jbBuscar.setEnabled(false);
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,8 +177,35 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
 
-        jbNuevo.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbGuardar.setBackground(new java.awt.Color(102, 102, 255));
+        jbGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
+
+        jbActualizar.setBackground(new java.awt.Color(102, 102, 255));
+        jbActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jbActualizar.setText("Actualizar");
+        jbActualizar.setEnabled(false);
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
+
+        jbNuevo.setBackground(new java.awt.Color(102, 102, 255));
+        jbNuevo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbNuevo.setForeground(new java.awt.Color(255, 255, 255));
         jbNuevo.setText("Nuevo");
         jbNuevo.setToolTipText("");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -175,89 +213,30 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jbNuevoActionPerformed(evt);
             }
         });
+        jPanel1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
+
+        jbSalir.setBackground(new java.awt.Color(102, 102, 255));
+        jbSalir.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jbSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 320, -1));
+        jPanel1.add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jbGuardar))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfDni, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfLegajo, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addComponent(jbBuscar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jbActualizar)
-                                .addGap(48, 48, 48)
-                                .addComponent(jbNuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(jbSalir)))))
-                .addGap(27, 27, 27))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbBuscar)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbActualizar)
-                    .addComponent(jbSalir)
-                    .addComponent(jbNuevo))
-                .addGap(26, 26, 26))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
         );
 
         pack();
@@ -271,7 +250,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         limpiarCampos();
         activarCampos();
         jbActualizar.setEnabled(false);
-        jtfDni.requestFocus();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -313,44 +291,41 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        if (jtfLegajo.getText().equals("")) {
-
-            JOptionPane.showMessageDialog(this, "Rellene el campo legajo para buscar el alumno");
-        } else {
-
-            int legajo = Integer.parseInt(jtfLegajo.getText());
-
+          
+        try {
+            int legajo = Integer.parseInt(jtfLegajo.getText()); 
             Alumno alumno = ad.BuscarAlumnoXId(legajo);
-
-            if (alumno.getDni() > 0) {
-
-                jtfDni.setText(alumno.getDni() + "");
-                jtfNombre.setText(alumno.getNombre());
-                jtfApellido.setText(alumno.getApellido());
-                jdcFecha.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
-                jcbEstado.setSelected(alumno.isEstado());
-                jbActualizar.setEnabled(true);
-                jbGuardar.setEnabled(false);
-
-            } else {
-
-                JOptionPane.showMessageDialog(this, "no existe el alumno con ese legajo");
-                limpiarCampos();
-            }
-        }
-
-
+             if (alumno.getDni() > 0) {
+                 jtfDni.setText(alumno.getDni() + "");
+                 jtfNombre.setText(alumno.getNombre());
+                 jtfApellido.setText(alumno.getApellido());
+                 jdcFecha.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));  
+                 jcbEstado.setSelected(alumno.isEstado());
+                 
+                 jbActualizar.setEnabled(true);
+                 jbGuardar.setEnabled(false);
+        } else {
+                 JOptionPane.showMessageDialog(this, " Alumno no encontrado");
+                  jtfLegajo.requestFocus();
+                  limpiarCampos();
+                 }
+          }
+                catch (NumberFormatException ex){JOptionPane.showMessageDialog(this, "debe ingresar un número");
+                        jtfLegajo.setText("");
+                        jtfLegajo.requestFocus();
+                        limpiarCampos();
+                 }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jtfLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLegajoFocusLost
-        try {
+       /* try {
             int legajo = Integer.parseInt(jtfLegajo.getText());
         } catch (NumberFormatException exp) {
             if (!(jtfLegajo.getText().equals(""))) {
                 JOptionPane.showMessageDialog(this, "Ingrese un legajo valido");
                 jtfLegajo.requestFocus();
             }
-        }
+        }*/
     }//GEN-LAST:event_jtfLegajoFocusLost
 
     private void jtfDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDniFocusLost
@@ -374,6 +349,8 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;

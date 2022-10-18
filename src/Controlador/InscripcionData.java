@@ -58,7 +58,7 @@ public class InscripcionData {
         }
     }
 
-    public void actualizarNota(Alumno alumno, Materia materia, int nota) {
+    public void actualizarNota(int idAlumno, int idMateria, int nota) {
 
         String sql = "UPDATE inscripcion SET nota= ? WHERE idAlumno = ? and idMateria = ?";
 
@@ -66,8 +66,8 @@ public class InscripcionData {
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, nota);
-            ps.setInt(2, alumno.getIdAlumno());
-            ps.setInt(3, materia.getIdMateria());
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
 
             if (ps.executeUpdate() > 0) {
 
@@ -225,14 +225,19 @@ public class InscripcionData {
         return listaTemp; 
     }
 
-    public List<Inscripcion> obtenerInscriptos() {
+    public List<Inscripcion> obtenerInscriptos(Alumno alumno) {
 
         ArrayList<Inscripcion> listaTemp = new ArrayList<>();
 
-        String sql = "SELECT * FROM inscripcion";
+        String sql = "SELECT inscripcion.idInscripto, inscripcion.idMateria,inscripcion.idAlumno, inscripcion.nota "
+                + "FROM inscripcion JOIN materia ON inscripcion.idMateria=materia.idMateria "
+                + "WHERE inscripcion.idAlumno=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, alumno.getIdAlumno());
+            
             ResultSet rs = ps.executeQuery();//select
 
             while (rs.next()) {
@@ -249,7 +254,41 @@ public class InscripcionData {
 
             ps.close();//cerra la coneccion      
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "InscripcionData Sentencia SQL/base de datos inactiva, error-obtenerInscriptos");
+            JOptionPane.showMessageDialog(null, "InscripcionData Sentencia SQL/base de datos inactiva, error-obtenerInscriptos(alumno)");
+        }
+        return listaTemp;
+    }
+    
+    public List<Inscripcion> obtenerInscriptos(Materia materia) {
+
+        ArrayList<Inscripcion> listaTemp = new ArrayList<>();
+
+        String sql = "SELECT inscripcion.idInscripto, inscripcion.idMateria,inscripcion.idAlumno, inscripcion.nota "
+                + "FROM inscripcion JOIN Alumno ON inscripcion.idAlumno=alumno.idAlumno "
+                + "WHERE inscripcion.idMateria=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, materia.getIdMateria());
+            
+            ResultSet rs = ps.executeQuery();//select
+
+            while (rs.next()) {
+
+                Inscripcion inscri = new Inscripcion();//no se si es necesario dentro del while (sobreescritura)
+
+                inscri.setIdInscripcion(rs.getInt("idInscripto"));
+                inscri.setIdAlumno(ad.BuscarAlumnoXId(rs.getInt("idAlumno")));
+                inscri.setIdMateria(md.BuscarMateriaXId(rs.getInt("idMateria")));
+                inscri.setNota(rs.getInt("nota"));
+
+                listaTemp.add(inscri);
+            }
+
+            ps.close();//cerra la coneccion      
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "InscripcionData Sentencia SQL/base de datos inactiva, error-obtenerInscriptos(Materia)");
         }
         return listaTemp;
     }

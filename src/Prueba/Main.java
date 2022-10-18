@@ -162,7 +162,7 @@ public class Main {
         alu = ad.BuscarAlumnoXId(1);
         mate = md.BuscarMateriaXId(5);
 
-        iData.actualizarNota(alu, mate, 5);
+       // iData.actualizarNota(alu, mate, 5);
     }
 
     public static void obtenerCursadaXId() {
@@ -187,11 +187,11 @@ public class Main {
 
     public static void obtenerInscriptos() {
 
-        for (Inscripcion x : iData.obtenerInscriptos()) {
+       /* for (Inscripcion x : iData.obtenerInscriptos()) {
             System.out.println(x.getIdAlumno().getNombre());
             System.out.println(x.getIdMateria().getNombre());
             System.out.println(x.getNota());
-        }
+        } */
 
     }
     

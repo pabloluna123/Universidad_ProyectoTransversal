@@ -5,6 +5,14 @@
  */
 package Vista;
 
+import Controlador.InscripcionData;
+import Controlador.MateriaData;
+import Modelo.Inscripcion;
+import Modelo.Materia;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Familia
@@ -14,9 +22,63 @@ public class FormularioAlumnoXMateria extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormularioAlumnoXMateria
      */
+    
+    private DefaultTableModel modelo;
+    private MateriaData m;
+    private InscripcionData iData;
+    ArrayList<Inscripcion> inscripciones= new ArrayList();
+    
     public FormularioAlumnoXMateria() {
         initComponents();
+        modelo = new DefaultTableModel();
+        m = new MateriaData();
+        iData = new InscripcionData();
+        cargarCombo();
+        armarCabecera();
     }
+    
+    private void cargarCombo(){
+        for (Materia x : m.obtenerMaterias()) {
+            jcbMateria.addItem(x);
+        }
+    }
+    
+    private void armarCabecera(){
+        List<Object> columnas = new ArrayList<>();
+
+        columnas.add("id");
+        columnas.add("nombre");
+        columnas.add("Apellido");
+        columnas.add("nota");
+
+        for (Object x : columnas) {
+
+            modelo.addColumn(x);
+        }
+        jtAlumnos.setModel(modelo);
+    }
+    
+    public void llenarTabla(){
+        borrarFilas();
+        Materia a = (Materia)jcbMateria.getSelectedItem();
+        inscripciones = (ArrayList)iData.obtenerInscriptos(a);
+        
+        for (Inscripcion x : inscripciones){
+            modelo.addRow(new Object[]{x.getIdAlumno().getIdAlumno(),x.getIdAlumno().getNombre(),x.getIdAlumno().getApellido(),x.getNota()});
+        }
+      }
+    
+    private void borrarFilas() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+            modelo.removeRow(i);
+          }
+      }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +89,93 @@ public class FormularioAlumnoXMateria extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtAlumnos = new javax.swing.JTable();
+        jcbMateria = new javax.swing.JComboBox<>();
+        Salir = new javax.swing.JButton();
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Materia");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 53, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel1.setText("Listado de Alumno por Materia");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 375, -1));
+
+        jtAlumnos.setBackground(new java.awt.Color(102, 102, 255));
+        jtAlumnos.setForeground(new java.awt.Color(255, 255, 255));
+        jtAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtAlumnos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 419, 140));
+
+        jcbMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcbMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 230, -1));
+
+        Salir.setBackground(new java.awt.Color(102, 102, 255));
+        Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaActionPerformed
+        // TODO add your handling code here:
+        llenarTabla();
+    }//GEN-LAST:event_jcbMateriaActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_SalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<Materia> jcbMateria;
+    private javax.swing.JTable jtAlumnos;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,18 +5,87 @@
  */
 package Vista;
 
+import Controlador.AlumnoData;
+import Controlador.InscripcionData;
+import Modelo.Alumno;
+import Modelo.Inscripcion;
+import Modelo.Materia;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Familia
  */
 public class FormularioCargarNotas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormularioCargarNotas
-     */
+    private DefaultTableModel modelo; 
+    private AlumnoData ad;
+    private InscripcionData iData;
+    ArrayList<Alumno> listaAlumno = new ArrayList();
+    ArrayList<Inscripcion> inscripciones= new ArrayList();
+    Alumno a = new Alumno();
+    Materia m = new Materia();
+    
+    
     public FormularioCargarNotas() {
         initComponents();
+        modelo = new DefaultTableModel();
+        ad = new AlumnoData();
+        iData = new InscripcionData();
+        cargarCombo();
+        armarCabecera();
     }
+    
+    private void cargarCombo() {
+        for (Alumno x : ad.obtenerAlumnos()) {
+            jcbAlumno.addItem(x);
+        }
+    }
+    
+     private void armarCabecera() {
+        List<Object> columnas = new ArrayList<>();
+
+        columnas.add("idMateria");
+        columnas.add("nombre");
+        columnas.add("año");
+        columnas.add("nota");
+
+        for (Object x : columnas) {
+
+            modelo.addColumn(x);
+        }
+        jtNotas.setModel(modelo);
+     }
+     
+     public void llenarTabla() {
+        borrarFilas();
+        Alumno a = (Alumno)jcbAlumno.getSelectedItem();
+        inscripciones = (ArrayList)iData.obtenerInscriptos(a);
+        
+        for (Inscripcion x : inscripciones){
+            modelo.addRow(new Object[]{x.getIdMateria().getIdMateria(),x.getIdMateria().getNombre(),x.getIdMateria().getAnio(),x.getNota()});
+        }
+      } 
+     
+      private void borrarFilas() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+            modelo.removeRow(i);
+          }
+      }
+      
+      
+      
+      
+     
+     
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +96,131 @@ public class FormularioCargarNotas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jcbAlumno = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtNotas = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jtfNota = new javax.swing.JTextField();
+        guardar = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel1.setText("Cargar Notas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 28, 170, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Alumno");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 74, 53, 24));
+
+        jcbAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcbAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 73, 220, -1));
+
+        jtNotas.setBackground(new java.awt.Color(102, 102, 255));
+        jtNotas.setForeground(new java.awt.Color(255, 255, 255));
+        jtNotas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtNotas);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 138, 371, 113));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Nota");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 35, 25));
+
+        jtfNota.setBackground(new java.awt.Color(102, 102, 255));
+        jtfNota.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfNota.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jtfNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 59, -1));
+
+        guardar.setBackground(new java.awt.Color(102, 102, 255));
+        guardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+
+        salir.setBackground(new java.awt.Color(102, 102, 255));
+        salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed
+        llenarTabla();
+    }//GEN-LAST:event_jcbAlumnoActionPerformed
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+        
+        int filaSeleccionada =  jtNotas.getSelectedRow();
+        if(filaSeleccionada != -1){
+            Alumno a = (Alumno)jcbAlumno.getSelectedItem();
+            int m = (Integer)jtNotas.getValueAt(filaSeleccionada, 0);
+            iData.actualizarNota(a.getIdAlumno(), m, Integer.parseInt(jtfNota.getText()));
+        }else {
+            JOptionPane.showMessageDialog(this, "debe seleccionar una opcion");
+        } 
+    }//GEN-LAST:event_guardarActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton guardar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<Alumno> jcbAlumno;
+    private javax.swing.JTable jtNotas;
+    private javax.swing.JTextField jtfNota;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
